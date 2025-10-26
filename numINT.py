@@ -20,6 +20,7 @@ if __name__ == "__main__":
 
 import argparse
 import json
+import sys
 import phonenumbers
 import requests
 import phonenumbers
@@ -37,4 +38,5 @@ if len(sys.argv) == 1:
 
 #  function for number scan to call API here 
 #  def num_scan():
+
 
