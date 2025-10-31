@@ -8,7 +8,7 @@ from colorama import Fore, Style
 
 def display():
     ascii_art = pyfiglet.figlet_format("NumINT", font="slant")
-    print('\033[1;36m')
+    print('\033[1;96m')
     print(ascii_art)
     print(f"{datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S')}")
     print('\033[0m')            
@@ -19,6 +19,7 @@ if __name__ == "__main__":
 
 
 import argparse
+from tqdm import tqdm
 import time
 import json
 import sys
@@ -27,7 +28,7 @@ import phonenumbers
 import re
 from phonenumbers import geocoder, carrier, timezone
 
-parser = argparse.ArgumentParser(description='Phone number intelligence, gathered from open source data\nhttps://github.com/T-Devs0/numINT.git',
+parser = argparse.ArgumentParser(description='Phonenumber intelligence, gathered from open source data\nhttps://github.com/T-Devs0/numINT.git',
 prog='numINT features', usage='%(prog)s --n <number to enter>, --h [display help and additional options]')
 
 parser.add_argument('--n', metavar ='number', type=str, help='Enter number to scan/verify here')
@@ -38,7 +39,7 @@ args = parser.parse_args()
 
 #Display general info upon running py file
 if len(sys.argv) == 1:
-   print('\033[1;36m')
+   print('\033[1;96m')
    print(parser.description)
    parser.print_usage()
    print('\33[0m')
@@ -49,13 +50,17 @@ def numformat(NumInput: str) -> str:
 
 def numsearch(NumInput: str):
     try:
-        print("Checking if Phone Number is valid ... \n")
-        time.sleep(1)
+        print('\033[1;96m')
+        
+        for t in tqdm(range(100), desc="Checking if phonenumber is valid..",leave=False):
+            time.sleep(0.007)
+       
         formatted = numformat(NumInput)
         nums = phonenumbers.parse(formatted, "US")
         if phonenumbers.is_valid_number(nums):
             number = phonenumbers.format_number(nums, phonenumbers.PhoneNumberFormat.E164), phonenumbers.geocoder.description_for_number(nums, "US")
             print(f"Phone number is valid: {number}")
+            print('\033[0m')
             return number
         else:
             print("Invalid Number")
@@ -66,6 +71,11 @@ def numsearch(NumInput: str):
 if args.n:
     numsearch(args.n)
 
-def numscan():
-#def osintscan():
+def numscan(Number: str):
+    API_KEY: str = ''
+    r = requests.get("https://phoneintelligence.abstractapi.com/v1/")
+    print(r.status_code)
+    print(r.content)
 
+
+#def osintscan():
