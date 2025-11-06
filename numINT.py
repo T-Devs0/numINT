@@ -114,4 +114,19 @@ if args.n:
 if args.s == True:
     numscan(args.n)
 
-#def osintscan():
+def osintscan():
+    headers = {'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36',
+                'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9',
+                'Accept-Charset': 'ISO-8859-1,utf-8;q=0.7,*;q=0.3',
+                'Accept-Encoding': 'none',
+                'Accept-Language': 'en-US,en;q=0.8',
+                'Connection': 'keep-alive',
+                'refere': 'https://example.com',
+                'cookie': '_gcl_au=1.1.586657126.1762298295;_ga=GA1.1.1424969066.1762298296;pxcts=8a7b4550-b9d4-11f0-a8f1-b3c2d74717e4;_pxvid=8a7b3eaf-b9d4-11f0-a8f0-31228d98d580;__cf_bm=vzHgeGanRq.y.lAc4MqSuG8LlbQ6BgmR8yfVUnSVk7w-1762408647-1.0.1.1-K3fo2QZTj34l7jXt8VkCxX8JNp2_KJgx.7Dop3MHL1z55XxHwbCsyJGmnoL9zDCDi_6yJ01E2xYNfabL.awGM687DAmsjv9Ze2D0iZznudmtkHkMXv0.OYNT4d09.n7p;_ga_ETWB2J0GG5=GS2.1.s1762408649$o3$g1$t1762409020$j59$l0$h0;datadome=cmpmioUovuOAoWzEZsWO1n0LTLFRu97upDrkNVe_PkIEl6ngQbA0N5q2zpBJC~gcp8KlbXFRcCkh3u2x2Ix6OPobNOo5dIdGnHWbRpRA5sl2vSppHGgZE9Ea6mKQufpv;_px3=2414e8adaafa9c6d07973424e3751258058ff9820bed9a1e9acca24cb0294528:hpmVMKeZJYxa0e2J63JLRED9AiOvE5dtqCIs0ejMUafNRz+l3HohkftjYhooKy1DlbCJ/9Oo78fhhIYJM50yZg==:1000:5iVrWkGEUSoVCcsbZLhkXr0xyYdfto9aTiN0NNxvZAnNIc/umkQiETY98Vd2xE7P1uXOd7hLYszOjRjfK52Rb75NPkbRaowmKzR8bFew1OPVB9cb17v3gZfIG8SwPBjks9C5KDv1l1bHw50vVuKUNR8W8QLpwZWE0Lo2/AlVpd9kUPTxHrLfWLu1x1+7S8gIaAsdY3bR+oXKPUvAUeklW4LQCEfdDvxJnd7VbzKJzKG88q+BTE2sIpWC4AO8ZwfhZpF/GhYcsF/Yr1ByMO9Ebg=='}
+    url = "https://www.cyberbackgroundchecks.com/phone"
+    agent = requests.get(url, headers = headers)
+    print(agent.status_code, agent.headers)
+
+if args.osint == True:
+    osintscan(args.n)
+
