@@ -1,6 +1,9 @@
-# Some logic adapted from PhoneInfoga by sundowndev
-# Source: https://github.com/FOGSEC/PhoneInfoga
-# License: GPL 3.0
+"""
+Some logic adapted from PhoneInfoga by sundowndev
+Source: https://github.com/FOGSEC/PhoneInfoga
+"""
+
+
 import pyfiglet
 import datetime
 import colorama 
@@ -146,4 +149,5 @@ def osintscan():
 if args.osint == True:
     osintscan(args.n)
 """
+
 
