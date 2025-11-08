@@ -13,9 +13,7 @@ def display():
     print(f"{datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S')}")
     print('\033[0m')            
 
-
-if __name__ == "__main__":
-    display()
+display()
 
 
 import argparse
@@ -148,3 +146,4 @@ def osintscan():
 if args.osint == True:
     osintscan(args.n)
 """
+
