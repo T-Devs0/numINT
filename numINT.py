@@ -1,9 +1,5 @@
-"""
-Some logic adapted from PhoneInfoga by sundowndev
-Source: https://github.com/FOGSEC/PhoneInfoga
-"""
-
-
+# Some logic adapted from PhoneInfoga by sundowndev
+# Source: https://github.com/FOGSEC/PhoneInfoga
 import pyfiglet
 import datetime
 import colorama 
@@ -16,7 +12,9 @@ def display():
     print(f"{datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S')}")
     print('\033[0m')            
 
-display()
+
+if __name__ == "__main__":
+    display()
 
 
 import argparse
@@ -87,6 +85,12 @@ def numscan(Number: str):
         fields="caller_name"
         )
 
+    twilio_data = getattr(twilio_num_lookup, "caller_name", {})
+    
+    twilio_caller_info = {
+        "name": twilio_data.get("caller_name", "N/A"),
+        "type": twilio_data.get("caller_type", "N/A")
+    }
 
     if r.content == "Unauthorized" or r.status_code != 200:
         print("Unexpected error to API call, please retry")
@@ -101,10 +105,12 @@ def numscan(Number: str):
     breach_info = numinfo.get("phone_breaches", {})
 
     print('\033[1;92m')
-    for t in tqdm(range(100), desc="Running scan..", leave=False):
-        time.sleep(0.007)
+    print('running scan...\n')
+    time.sleep(2)
 
     print(f"status code: {r.status_code}")
+    print(f"Name, Last|First: {twilio_caller_info['name']}")
+    print(f"Type: {twilio_caller_info['type']}")
     print("Phone carrier:", carrier_info.get("name", "N/A"))
     print("Line type:", carrier_info.get("line_type", "N/A"))
     print("Phone location, region:", location_info.get("city", "N/A"))
@@ -123,8 +129,9 @@ def numscan(Number: str):
     print("Date last breached", breach_info.get("date_last_breached", "N/A"))
     print("Breached domains:", breach_info.get("domain", "N/A"))
     print("Breach domain date:", breach_info.get("breach_date", "N/A"))
-    print("From Twilio Lookup:", twilio_num_lookup.caller_name)
+          
     print('\033[0m')
+
 
 
 if args.n:
@@ -149,5 +156,4 @@ def osintscan():
 if args.osint == True:
     osintscan(args.n)
 """
-
 
