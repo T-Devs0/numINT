@@ -1,5 +1,7 @@
-# Some logic adapted from PhoneInfoga by sundowndev
-# Source: https://github.com/FOGSEC/PhoneInfoga
+"""
+Some logic adapted from PhoneInfoga by sundowndev
+Source: https://github.com/FOGSEC/PhoneInfoga
+"""
 import pyfiglet
 import datetime
 import colorama 
@@ -12,10 +14,7 @@ def display():
     print(f"{datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S')}")
     print('\033[0m')            
 
-
-if __name__ == "__main__":
-    display()
-
+display()
 
 import argparse
 import os  
@@ -156,4 +155,5 @@ def osintscan():
 if args.osint == True:
     osintscan(args.n)
 """
+
 
